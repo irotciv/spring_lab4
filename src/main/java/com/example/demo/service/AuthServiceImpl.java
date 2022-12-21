@@ -24,8 +24,8 @@ public class AuthServiceImpl implements AuthService {
     public Map<String, Object> processRegister(UserRegistrationRequest request) {
         Map<String, Object> result = new HashMap<>();
         if (userRepository.findByEmail(request.getEmail()) != null) {
-            result.put("message_number", 0);
-            result.put("msg", String.format("Користувач з email %s вже зареєстрований.", request.getEmail()));
+            result.put("message_number", 1);
+            result.put("msg", "Користувач з такою поштою вже зареєстрований.");
             result.put("link", "/registration");
             result.put("text", "Натисніть, щоб спробувати ще раз");
         } else {
@@ -38,7 +38,7 @@ public class AuthServiceImpl implements AuthService {
             user.setLastName(request.getLastName());
 
             userRepository.getUsers().add(user);
-            result.put("message_number", 1);
+            result.put("message_number", 0);
             result.put("msg", "Ви успішно зареєстровані!");
             result.put("link", "/login");
             result.put("text", "Натисніть, щоб продовжити");

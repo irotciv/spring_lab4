@@ -8,20 +8,9 @@
 <body>
 <div>
     <c:choose>
-        <c:when test="${message_number == 0}">
+        <c:when test="${message_number == 0 || message_number == 1}">
             <div>
                 <p class="mb-0"><c:out value="${msg}"/></p>
-                <c:if test="${link == '/login'}">
-                    <a href="/login" type="button"><strong><c:out value="${text}"/></strong></a>
-                </c:if>
-                <c:if test="${link == '/registration'}">
-                    <a href="/registration" type="button"><strong><c:out value="${text}"/></strong></a>
-                </c:if>
-            </div>
-        </c:when>
-        <c:when test="${message_number == 1}">
-            <div>
-                <p><c:out value="${msg}"/></p>
                 <c:if test="${link == '/login'}">
                     <a href="/login" type="button"><strong><c:out value="${text}"/></strong></a>
                 </c:if>
