@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>newOrder</title>
+</head>
+<body>
+<form action="/" th:action="@{/orders/new?id={id}(id=${menuItems.id})}" th:object="${order}" method="post">
+    <p>first name: <input type="text" th:field="*{user.firstName}"/></p>
+    <p>last name: <input type="text" th:field="*{user.lastName}"/></p>
+    <p>menu item: <span th:text="${menuItems}"></span></p>
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+</form>
+</body>
+</html>

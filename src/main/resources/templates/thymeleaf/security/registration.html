@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="ua">
+<head>
+  <meta charset="utf-8">
+  <title>Registration</title>
+</head>
+<body>
+<form th:action="@{/registration}" th:object="${user}" method="post">
+  <h1>Реєстрація</h1>
+  <h4>Після успішної реєстрації Вам потрібно увійти з Вашою поштою та паролем</h4>
+  <div>
+    <input type="email" th:field="*{email}" name="email" required>
+    <label>Email</label>
+  </div>
+  <div>
+    <input type="text" th:field="*{firstName}" name="firstName" required>
+    <label>Ім'я</label>
+  </div>
+  <div>
+    <input type="text" th:field="*{lastName}" name="lastName" required>
+    <label>Прізвище</label>
+  </div>
+  <div>
+    <input type="password" th:field="*{password}" minlength="8" name="password" required>
+    <label>Пароль</label>
+  </div>
+
+  <button type="submit">Зареєструватися</button>
+  <br>
+  <a href="/login">Я вже зареєстрований</a>
+  <br>
+  <a href="/">До головної сторінки</a>
+</form>
+</body>
+</html>

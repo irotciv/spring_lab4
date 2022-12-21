@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="ua">
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+</head>
+<body>
+<form th:action="@{/login}" method="post">
+    <h1>Увійти в акаунт</h1>
+    <div class="alert alert-danger" th:if="${param.error != null}">
+        Неправильний email або пароль
+    </div>
+    <div>
+        <input type="email" name="email" required>
+        <label>Email</label>
+    </div>
+    <div>
+        <input type="password" minlength="8" name="password" required>
+        <label>Пароль</label>
+    </div>
+    <button type="submit">Увійти</button>
+    <br>
+    <a href="/registration">Зареєструватися</a>
+    <br>
+    <a href="/">До головної сторінки</a>
+</form>
+</body>
+</html>

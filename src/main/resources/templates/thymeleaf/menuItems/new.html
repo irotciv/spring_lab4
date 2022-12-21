@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>addNewMenuItem</title>
+</head>
+<body>
+<form action="/" th:action="@{/menuItems/new}" th:object="${menuItem}" method="post">
+    <p>name: <input type="text" th:field="*{name}"/></p>
+    <p>description: <input type="text" th:field="*{description}"/></p>
+    <p>price: <input type="number" th:field="*{price}"/></p>
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+</form>
+</body>
+</html>

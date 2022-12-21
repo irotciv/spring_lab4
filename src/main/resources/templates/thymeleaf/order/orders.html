@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: lemonchiffon;
+        }
+
+        /*tr:nth-child(odd) {*/
+        /*    background-color: darkseagreen;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<h2 align="center">Замовлення</h2>
+<table>
+    <tr>
+        <th style="width: 15%" scope="col">Номер замовлення</th>
+        <th scope="col">Прізвище та ім'я</th>
+        <th scope="col">Елемент меню</th>
+        <th style="width: 20%" scope="col">Ціна</th>
+    </tr>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td>
+            <span th:text="${order.user.lastName}"></span>
+            <span th:text="${order.user.firstName}"></span>
+        </td>
+        <td th:text="${order.menuItems.name}"></td>
+        <td th:text="${order.menuItems.price}"></td>
+    </tr>
+</table>
+</body>
+</html>
