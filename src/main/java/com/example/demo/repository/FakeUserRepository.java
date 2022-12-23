@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 @Getter
 @Setter
-public class FakeUserRepository implements UserRepository{
+public class FakeUserRepository implements UserRepository {
     private final List<User> users = new ArrayList<>();
 
     public FakeUserRepository() {

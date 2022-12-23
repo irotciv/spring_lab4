@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 @Getter
 @Setter
-public class FakeMenuItemsRepository implements MenuItemsRepository{
+public class FakeMenuItemsRepository implements MenuItemsRepository {
     private final List<MenuItems> menuItems = new ArrayList<>();
 
     public FakeMenuItemsRepository() {

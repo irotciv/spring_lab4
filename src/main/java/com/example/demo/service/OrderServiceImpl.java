@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
     private final OrderRepository fakeOrderRepository;
     private final MenuItemsRepository fakeMenuItemsRepository;
 

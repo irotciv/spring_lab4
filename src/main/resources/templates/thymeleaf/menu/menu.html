@@ -9,14 +9,17 @@
             border-collapse: collapse;
             width: 100%;
         }
+
         td, th {
             border: 1px solid #dddddd;
             text-align: center;
             padding: 8px;
         }
+
         tr:nth-child(even) {
             background-color: lightgreen;
         }
+
         /*tr:nth-child(odd) {*/
         /*    background-color: darkseagreen;*/
         /*}*/
@@ -26,13 +29,13 @@
 <h2 align="center">Меню</h2>
 <table>
     <tr>
-<!--        <th scope="col">Номер елемента меню</th>-->
+        <!--        <th scope="col">Номер елемента меню</th>-->
         <th scope="col">Назва</th>
         <th scope="col">Опис</th>
         <th scope="col">Ціна</th>
     </tr>
     <tr th:each="menuItem : ${menu}">
-<!--        <td th:text="${menuItem.id}"></td>-->
+        <!--        <td th:text="${menuItem.id}"></td>-->
         <td th:text="${menuItem.name}"></td>
         <td th:text="${menuItem.description}"></td>
         <td th:text="${menuItem.price}"></td>

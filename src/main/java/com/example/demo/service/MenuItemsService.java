@@ -8,7 +8,10 @@ import java.util.List;
 @Service
 public interface MenuItemsService {
     void submitNewMenuItem(MenuItems menuItem);
+
     MenuItems getMenuItemById(Long id);
+
     void deleteMenuItems(Long id);
+
     List<MenuItems> getMenuItems();
 }

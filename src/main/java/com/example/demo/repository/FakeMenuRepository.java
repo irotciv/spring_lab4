@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 @Getter
 @Setter
-public class FakeMenuRepository implements MenuRepository{
+public class FakeMenuRepository implements MenuRepository {
     private MenuItemsRepository fakeMenuItemsRepository;
 
     public FakeMenuRepository(MenuItemsRepository fakeMenuItemsRepository) {
