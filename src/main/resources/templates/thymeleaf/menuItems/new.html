@@ -5,7 +5,7 @@
     <title>addNewMenuItem</title>
 </head>
 <body>
-<form action="/" th:action="@{/menuItems/new}" th:object="${menuItem}" method="post">
+<form action="/" th:action="@{/menu-items/new}" th:object="${menuItem}" method="post">
     <p>name: <input type="text" th:field="*{name}"/></p>
     <p>description: <input type="text" th:field="*{description}"/></p>
     <p>price: <input type="number" th:field="*{price}"/></p>
