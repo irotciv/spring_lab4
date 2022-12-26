@@ -1,0 +1,311 @@
+---
+openapi: 3.0.1
+info:
+  title: OpenAPI Documentation
+  description: Documentation of RESTful webservice in Lab4
+  version: v.1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+tags:
+  - name: Orders
+    description: Operation with orders
+  - name: Menu Items
+    description: Operation with menu items
+paths:
+  "/api/menu-items/{id}":
+    get:
+      tags:
+        - Menu Items
+      summary: Get menu item
+      description: Get the menu item by ID
+      operationId: getMenuItem
+      parameters:
+        - name: id
+          in: path
+          description: The menu item's ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful menu item's getting
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/MenuItems"
+        '404':
+          description: The menu item is not found
+          content: {}
+    put:
+      tags:
+        - Menu Items
+      summary: Update the menu item
+      description: Update the information about a menu item by ID
+      operationId: updateMenuItem
+      parameters:
+        - name: id
+          in: path
+          description: The menu item's ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: name
+          in: query
+          description: Name of new menu item
+          required: true
+        - name: description
+          in: query
+          description: Description of new menu item
+          required: true
+        - name: price
+          in: query
+          description: Price of new menu item
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/MenuItems"
+      responses:
+        '200':
+          description: Successful menu items updating
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/MenuItems"
+        '404':
+          description: The menu item is not valid
+          content: {}
+    delete:
+      tags:
+        - Menu Items
+      summary: Delete the menu item
+      description: Delete the menu item from collection
+      operationId: deleteMenuItem
+      parameters:
+        - name: id
+          in: path
+          description: The menu item's ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful menu item's deleting
+          content:
+            "*/*":
+              schema:
+                type: object
+        '404':
+          description: The menu item is not found
+          content: {}
+  "/api/menu-items":
+    get:
+      tags:
+        - Menu Items
+      summary: Get menu items by parameters
+      description: Get menu items by parameters (price of menu item, part of menu
+        item's description)
+      operationId: getMenuItems
+      parameters:
+        - name: price
+          in: query
+          description: Price of the menu item
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: description
+          in: query
+          description: A part of menu item's description
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: 'A page with menu items '
+          required: false
+          schema:
+            minimum: 0
+            type: integer
+            format: int32
+            default: 0
+        - name: size
+          in: query
+          description: A size of menu items on page
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            format: int32
+            default: 2
+      responses:
+        '200':
+          description: Successful menu items search
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/MenuItems"
+        '404':
+          description: The menu items are not found
+          content: {}
+    post:
+      tags:
+        - Menu Items
+      summary: Add new menu item
+      description: Add menu item to collection
+      operationId: createNewMenuItem
+      parameters:
+        - name: name
+          in: query
+          description: Name of new menu item
+          required: true
+        - name: description
+          in: query
+          description: Description of new menu item
+          required: true
+        - name: price
+          in: query
+          description: Price of new menu item
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/MenuItems"
+      responses:
+        '200':
+          description: Successful menu items creating
+          content:
+            "*/*":
+              schema:
+                type: object
+        '404':
+          description: The menu items are not valid
+          content: {}
+  "/api/orders":
+    get:
+      tags:
+        - Orders
+      summary: Get orders
+      description: Get all orders from server
+      operationId: getOrders
+      responses:
+        '200':
+          description: Successful orders getting
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Order"
+        '404':
+          description: The orders are not found
+          content: {}
+  "/api/orders/{id}":
+    get:
+      tags:
+        - Orders
+      summary: Get order
+      description: Get the order by ID
+      operationId: getOrder
+      parameters:
+        - name: id
+          in: path
+          description: The order's ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful order's getting
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/Order"
+        '404':
+          description: The order is not found
+          content: {}
+    delete:
+      tags:
+        - Orders
+      summary: Delete the order
+      description: Delete the order from collection
+      operationId: deleteOrder
+      parameters:
+        - name: id
+          in: path
+          description: The order's ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful order's deleting
+          content:
+            "*/*":
+              schema:
+                type: object
+        '404':
+          description: The order is not found
+          content: {}
+components:
+  schemas:
+    MenuItems:
+      required:
+        - description
+        - name
+        - price
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+        description:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+        price:
+          minimum: 1
+          type: integer
+          format: int32
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user:
+          "$ref": "#/components/schemas/User"
+        menuItems:
+          "$ref": "#/components/schemas/MenuItems"
+    User:
+      required:
+        - firstName
+        - lastName
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        firstName:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+        lastName:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
