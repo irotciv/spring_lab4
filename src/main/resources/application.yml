@@ -5,3 +5,10 @@ spring:
       suffix: .jsp
   thymeleaf:
     view-names: thymeleaf/*
+
+server:
+  error:
+    include-stacktrace: on_param
+    include-message: on_param
+    include-exception: off
+    include-binding-errors: on_param
